@@ -12,7 +12,6 @@ function App() {
 
     useEffect(()=>{
         getFoodItems()
-
     },[])
 
 
@@ -21,6 +20,7 @@ function App() {
             method: 'GET',
             url: '/food'
         }).then(response => {
+            console.log(response.data);
             setShoppingList(response.data)
         }).catch(err => {
             console.log(err)
@@ -28,6 +28,8 @@ function App() {
 
 
     }
+
+    console.log('on line 32', shoppingList);
     return (
 		<div className="App">
 			<Header />

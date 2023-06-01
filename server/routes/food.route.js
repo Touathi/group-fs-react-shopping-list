@@ -5,7 +5,7 @@ const pool = require('../modules/pool.js');
 
 router.get('/', (req, res) => {
 
-    const sqlText = `SELECT * FROM "food" ORDER BY "name" ASC;`;
+    const sqlText = `SELECT * FROM "food";`;
     pool.query(sqlText)
         .then((result) => {
             console.log(`Got stuff back from the database`, result);
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
         })
     })
 
-   
+
 router.post('/', (req, res) => {
 
     const foods = req.body;

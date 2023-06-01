@@ -24,26 +24,43 @@ function FoodList({ shoppingList, getFoodItems }) {
 			});
 	};
 
+    	
 	return (
-		<section>
+		<>
 			<div>
 				<h3>List</h3>
 				<button onClick={resetItems}>Reset</button>
 				<button onClick={deleteItems}>Clear</button>
 			</div>
+
 			<div>
-				<div>
-					{shoppingList.map((item) => {
-						<Item
-							key={item.id}
-							item={item}
-							getFoodItems={getFoodItems}
-						/>;
-					})}
-				</div>
+				{shoppingList.map((item) => (
+					<Item key={item.id} item={item} />
+				))}
 			</div>
-		</section>
+		</>
 	);
 }
 
 export default FoodList;
+
+
+
+
+{/* <div>
+	{shoppingList.map((item) => {
+		<div>
+			<p>WORKRKR</p>
+
+			<p>{item.name}</p>
+			<p>
+				{item.quantity} {item.unit}
+			</p>
+
+			<p>
+				<button onClick={updateItem}>Buy</button>
+				<button onClick={deleteItem}>Remove</button>
+			</p>
+		</div>;
+	})}
+</div>; */}
