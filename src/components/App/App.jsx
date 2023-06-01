@@ -10,7 +10,7 @@ function App() {
             <Header />
             <main>
                 <p>Under Construction...</p>
-            </main>
+            </main> 
         </div>
     );
 }
