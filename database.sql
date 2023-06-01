@@ -6,9 +6,9 @@
 
 CREATE TABLE "food" (
 id SERIAL PRIMARY KEY,
-name VARCHAR(80) NOT NULL,
-quantity FLOAT NOT NULL,
-unit VARCHAR (25) NOT NULL,
+name VARCHAR(80),
+quantity FLOAT,
+unit VARCHAR (25),
 purchased BOOLEAN DEFAULT FALSE);
 
 
