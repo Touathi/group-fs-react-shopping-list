@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
         })
     })
 
-
+   
 router.post('/', (req, res) => {
 
     const foods = req.body;
@@ -39,12 +39,12 @@ router.post('/', (req, res) => {
     })
 
 router.put('/:id', (req, res) => {
- 
-    
+
+
     const idToUpdate = req.params.id
 
     const sqlText =`
-    UPDATE TABLE "food" 
+    UPDATE TABLE "food"
     SET "purchased" = true
     WHERE "id" = $1;
     `
