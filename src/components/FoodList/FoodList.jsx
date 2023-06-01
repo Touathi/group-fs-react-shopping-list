@@ -24,7 +24,7 @@ function FoodList({ shoppingList, getFoodItems }) {
 			});
 	};
 
-    	
+
 	return (
 		<>
 			<div>
@@ -35,7 +35,7 @@ function FoodList({ shoppingList, getFoodItems }) {
 
 			<div>
 				{shoppingList.map((item) => (
-					<Item key={item.id} item={item} />
+					<Item key={item.id} item={item} getFoodItems={getFoodItems}/>
 				))}
 			</div>
 		</>
