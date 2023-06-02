@@ -3,7 +3,7 @@ import Item from "../Item/Item";
 
 function FoodList({ shoppingList, getFoodItems }) {
 	const resetItems = () => {
-		Axios.put("/food")
+		Axios.put("/food/foods")
 			.then((response) => {
 				console.log(response);
 				getFoodItems();
@@ -14,7 +14,7 @@ function FoodList({ shoppingList, getFoodItems }) {
 	};
 
 	const deleteItems = () => {
-		Axios.delete("/food")
+		Axios.delete("/food/foods")
 			.then((response) => {
 				console.log(response);
 				getFoodItems();

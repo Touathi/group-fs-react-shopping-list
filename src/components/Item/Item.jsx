@@ -1,10 +1,11 @@
 import axios from 'axios'
+import { useState } from 'react';
 
 
 function Item({ item, getFoodItems }) {
 	const updateItem = () => {
 		axios
-			.put(`/food/${item.id}`)
+			.put(`/food/buy/${item.id}`)
 			.then((response) => {
 				getFoodItems();
 				console.log(response);
@@ -16,7 +17,7 @@ function Item({ item, getFoodItems }) {
 
 	const deleteItem = () => {
 		axios
-			.delete(`/food/${item.id}`)
+			.delete(`/food/delete/${item.id}`)
 			.then((response) => {
 				getFoodItems();
 				console.log(response);
@@ -26,17 +27,23 @@ function Item({ item, getFoodItems }) {
 			});
 	};
 
+
+	//const [purchased, setPurchased] = useState[false]
+
 	return (
 		<div>
 			<p>{item.name}</p>
 			<p>
 				{item.quantity} {item.unit}
 			</p>
-
-			<p>
-				<button onClick={updateItem}>Buy</button>
-				<button onClick={deleteItem}>Remove</button>
-			</p>
+			<div>
+				{item.purchased ?
+					(<p>PURCHASED.</p>)
+				:(<p>
+					<button onClick={updateItem}>Buy</button>
+					<button onClick={deleteItem}>Remove</button>
+				</p>)}
+				</div>
 		</div>
 	);
 }

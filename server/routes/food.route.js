@@ -38,14 +38,14 @@ router.post('/', (req, res) => {
         })
     })
 
-router.put('/:id', (req, res) => {
+router.put('/buy/:id', (req, res) => {
 
 
     const idToUpdate = req.params.id
 
     const sqlText =`
-    UPDATE TABLE "food"
-    SET "purchased" = true
+    UPDATE food
+    SET "purchased" = 'TRUE'
     WHERE "id" = $1;
     `
     pool.query(sqlText, [idToUpdate] )
@@ -58,7 +58,7 @@ router.put('/:id', (req, res) => {
         })
     })
 
-router.delete('/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
 
     const idToDel = req.params.id
 
@@ -72,6 +72,41 @@ router.delete('/:id', (req, res) => {
         })
         .catch((error) => {
             console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        })
+    })
+router.put('/foods', (req, res) => {
+
+
+    // const idToUpdate = req.params.id
+
+    const allPutQuery =`
+    UPDATE "food"
+    SET "purchased" = 'FALSE';
+    `
+    pool.query(allPutQuery)
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${allPutQuery}`, error);
+            res.sendStatus(500);
+        })
+    })
+
+router.delete('/foods', (req, res) => {
+
+    // const idToDel = req.params.id
+
+    const allDeleteQuery = `
+    DELETE FROM "food";
+    `;
+    pool.query(allDeleteQuery)
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${allDeleteQuery}`, error);
             res.sendStatus(500);
         })
     })
